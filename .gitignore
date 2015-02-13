@@ -1,0 +1,6 @@
+.vagrant
+/projects
+*.ppk
+*.stackdump
+*.swp
+/puppet/config/passphrase

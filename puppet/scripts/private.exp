@@ -1,0 +1,24 @@
+#!/usr/bin/expect -f
+
+set force_conservative 0  ;# set to 1 to force conservative mode even if
+                          ;# script wasn't run conservatively originally
+if {$force_conservative} {
+        set send_slow {1 .1}
+        proc send {ignore arg} {
+                sleep .1
+                exp_send -s -- $arg
+        }
+}
+
+set timeout -1
+spawn puttygen /home/vagrant/.ssh/priv.ppk -P -O private-openssh -o /home/vagrant/.ssh/id_rsa
+match_max 100000
+expect -exact "Enter passphrase to load key: "
+send -- "zq6rvrbNG+^w\r"
+expect -exact "\r
+Enter passphrase to save key: "
+send -- "zq6rvrbNG+^w\r"
+expect -exact "\r
+Re-enter passphrase to verify: "
+send -- "zq6rvrbNG+^w\r"
+expect eof

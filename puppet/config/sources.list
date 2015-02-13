@@ -1,0 +1,2 @@
+deb http://ca.archive.ubuntu.com/ubuntu/ precise main universe
+deb-src http://ca.archive.ubuntu.com/ubuntu/ precise main universe
